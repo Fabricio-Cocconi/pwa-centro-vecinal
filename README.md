@@ -6,6 +6,9 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
+> **🚀 Demo en Vivo:** [https://pwa-centro-vecinal.vercel.app](https://pwa-centro-vecinal.vercel.app)  
+> *(Abre este enlace desde el navegador de tu celular para probar e instalar la aplicación)*
+
 Aplicación Web Progresiva (PWA) diseñada y desarrollada para los vecinos del **Centro Vecinal Santa Isabel 2da Sección**. Su objetivo principal es centralizar y facilitar el acceso rápido a números de emergencia, reclamos municipales y contactos vecinales útiles en una interfaz moderna, accesible y optimizada para dispositivos móviles.
 
 ---
@@ -64,3 +67,4 @@ Para actualizar la información de los botones, se incluyó un panel oculto:
 *Desarrollador de la aplicación*
 
 [🔗 Mi perfil de GitHub](https://github.com/Fabricio-Cocconi)
+
