@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="description" content="App de emergencias y contactos para el Barrio Santa Isabel 2da Sección">
+    <title>Centro Vecinal - Santa Isabel 2da</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Santa Isabel 2">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for better readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Screen -->
+        <main id="home-screen" class="screen">
+            <header>
+                <div class="header-content">
+                    <h1>Santa Isabel 2da</h1>
+                    <p class="subtitle">Centro Vecinal</p>
+                </div>
+                <div class="header-actions">
+                    <button id="install-btn" class="install-btn hidden" aria-label="Instalar App">📥 Instalar App</button>
+                    <button id="settings-btn" class="icon-btn" aria-label="Configuración">⚙️</button>
+                </div>
+            </header>
+            
+            <div class="scroll-container">
+                <section class="home-section">
+                    <h2 class="section-title">Emergencias</h2>
+                    <div class="emergency-grid">
+                <button class="card-btn police" onclick="handleCall('police')">
+                    <span class="btn-icon">🚓</span>
+                    <span class="btn-text" id="label-police">Policía</span>
+                </button>
+                
+                <button class="card-btn fire" onclick="handleCall('fire')">
+                    <span class="btn-icon">🚒</span>
+                    <span class="btn-text" id="label-fire">Bomberos</span>
+                </button>
+                
+                <button class="card-btn medical" onclick="handleCall('medical')">
+                    <span class="btn-icon">🚑</span>
+                    <span class="btn-text" id="label-medical">Emergencias</span>
+                </button>
+                
+                <button class="card-btn community" onclick="handleCall('community')">
+                    <span class="btn-icon">🏘️</span>
+                    <span class="btn-text" id="label-community">Centro Vecinal</span>
+                </button>
+                
+                <button class="card-btn defense" onclick="handleCall('defense')">
+                    <img src="defensa-civil.png" alt="Defensa Civil" class="btn-logo">
+                    <span class="btn-text" id="label-defense">Defensa Civil</span>
+                </button>
+                
+                <button class="card-btn epec" onclick="handleCall('epec')">
+                    <span class="btn-icon">⚡</span>
+                    <span class="btn-text" id="label-epec">EPEC</span>
+                </button>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <h2 class="section-title">Reclamos (WhatsApp)</h2>
+                    <div class="emergency-grid">
+                        <button class="card-btn light" onclick="handleCall('light')">
+                            <span class="btn-icon">💡</span>
+                            <span class="btn-text" id="label-light">Reclamo de alumbrado</span>
+                        </button>
+                        
+                        <button class="card-btn water" onclick="handleCall('water')">
+                            <span class="btn-icon">💧</span>
+                            <span class="btn-text" id="label-water">Reclamos Aguas Cordobesas</span>
+                        </button>
+                        
+                        <button class="card-btn drain" onclick="handleCall('drain')">
+                            <span class="btn-icon">🚽</span>
+                            <span class="btn-text">Desagote</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <h2 class="section-title">Salud</h2>
+                    <div class="emergency-grid">
+                        <button class="card-btn hospital" onclick="handleCall('hospital')">
+                            <span class="btn-icon">🏥</span>
+                            <span class="btn-text" id="label-hospital">Sacar turnos Hospital</span>
+                        </button>
+                        <button class="card-btn appointments" onclick="handleCall('appointments')">
+                            <span class="btn-icon">👨‍⚕️</span>
+                            <span class="btn-text" id="label-appointments">Turnos Médicos</span>
+                        </button>
+                    </div>
+                <section class="home-section">
+                    <h2 class="section-title">Servicios</h2>
+                    <div class="emergency-grid">
+                        <button class="card-btn salon" onclick="handleCall('salon')">
+                            <span class="btn-icon">🎈</span>
+                            <span class="btn-text" id="label-salon">Alquiler del Salón</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+            
+            <footer>
+                <p>Córdoba Capital, Argentina</p>
+            </footer>
+        </main>
+
+        <!-- Settings Screen (Hidden by default) -->
+        <section id="settings-screen" class="screen hidden">
+            <header>
+                <button id="back-btn" class="icon-btn">⬅️</button>
+                <h1>Configuración</h1>
+            </header>
+            
+            <div class="settings-content">
+                <p class="settings-hint">Modifica los datos de la aplicación:</p>
+                
+                <form id="settings-form">
+                    <div id="dynamic-settings-container"></div>
+                    
+                    <div class="input-group" style="margin-top:30px;">
+                        <label for="admin-pin">PIN de Administrador</label>
+                        <input type="password" id="admin-pin" pattern="[0-9]*" inputmode="numeric" placeholder="1234">
+                    </div>
+
+                    <button type="submit" class="save-btn">GUARDAR CAMBIOS</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- PIN Modal -->
+        <div id="pin-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Acceso Privado</h2>
+                <p class="settings-hint">Ingrese el PIN para configurar</p>
+                <input type="password" id="pin-input" pattern="[0-9]*" inputmode="numeric" placeholder="PIN" style="width:100%; padding:15px; margin-bottom:20px; font-size:1.5rem; text-align:center; border:2px solid #ddd; border-radius:12px;">
+                <p id="pin-error" style="color:var(--fire); display:none; margin-bottom:15px; font-weight:bold;">PIN Incorrecto</p>
+                <div class="modal-actions">
+                    <button id="cancel-pin" class="modal-btn cancel">CANCELAR</button>
+                    <button id="submit-pin" class="modal-btn confirm" style="background:var(--police)">ENTRAR</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirm-modal" class="modal hidden">
+            <div class="modal-content">
+                <p id="confirm-name" class="confirm-target"></p>
+                <p id="confirm-number" class="confirm-phone"></p>
+                <p id="confirm-msg" class="confirm-msg hidden"></p>
+                
+                <div class="modal-actions">
+                    <button id="cancel-call" class="modal-btn cancel">CANCELAR</button>
+                    <button id="confirm-call-btn" class="modal-btn confirm">CONFIRMAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Error al registrar Service Worker', err));
+            });
+        }
+
+        // Handle Installation
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can add to home screen
+            installBtn.classList.remove('hidden');
+        });
+
+        installBtn.addEventListener('click', (e) => {
+            // hide our user interface that shows our A2HS button
+            installBtn.classList.add('hidden');
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+            });
+        });
+
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('App instalada');
+            installBtn.classList.add('hidden');
+        });
+
+        // iOS Detection
+        const isIos = () => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test(userAgent);
+        };
+        const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+        if (isIos() && !isInStandaloneMode()) {
+            // Show a simple hint for iOS users after a short delay
+            setTimeout(() => {
+                const footer = document.querySelector('footer');
+                const iosHint = document.createElement('p');
+                iosHint.className = 'ios-hint';
+                iosHint.innerHTML = 'Para instalar: Toca <span class="share-icon">⎋</span> y luego "Añadir a pantalla de inicio"';
+                footer.prepend(iosHint);
+            }, 2000);
+        }
+
+
+    </script>
+</body>
+</html>

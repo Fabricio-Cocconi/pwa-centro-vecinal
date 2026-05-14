@@ -1,0 +1,385 @@
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #2c3e50;
+    --white: #ffffff;
+    --police: #2980b9;
+    --fire: #c0392b;
+    --medical: #27ae60;
+    --community: #25d366; /* WhatsApp Green */
+    --defense: #c0392b; /* Red for Defensa Civil */
+    --local: #25d366; /* WhatsApp Green */
+    --light: #f1c40f;
+    --water: #3498db;
+    --drain: #795548;
+    --appointments: #e91e63;
+    --hospital: #8e44ad;
+    --salon: #f39c12;
+    --epec: #2980b9;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --font-main: 'Outfit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.4;
+}
+
+#app {
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    background: var(--white);
+}
+
+.screen {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.scroll-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.home-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 5px solid var(--police);
+    padding-left: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 20px 0;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #7f8c8d;
+}
+
+.icon-btn {
+    background: #ecf0f1;
+    border: none;
+    font-size: 1.8rem;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.install-btn {
+    background: var(--medical);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2);
+    transition: all 0.2s;
+}
+
+.install-btn:active {
+    transform: scale(0.95);
+}
+
+.install-btn.hidden {
+    display: none;
+}
+
+.icon-btn:active {
+    transform: scale(0.9);
+}
+
+/* Grid Layout */
+.emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.card-btn {
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.card-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.btn-icon {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.btn-logo {
+    width: clamp(50px, 15vw, 75px);
+    height: clamp(50px, 15vw, 75px);
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.btn-text {
+    font-size: clamp(0.75rem, 3.5vw, 1.05rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+/* Button Colors */
+.police { background: var(--police); }
+.fire { background: var(--fire); }
+.medical { background: var(--medical); }
+.community { background: var(--community); }
+.defense { background: var(--defense); }
+.local { background: var(--local); }
+.light { background: var(--light); color: #2c3e50; }
+.water { background: var(--water); }
+.drain { background: var(--drain); }
+.appointments { background: var(--appointments); }
+.hospital { background: var(--hospital); }
+.salon { background: var(--salon); color: white; }
+.epec { background: var(--epec); color: white; }
+
+.settings-subtitle {
+    margin: 30px 0 15px 0;
+    font-size: 1.2rem;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    color: var(--text-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
+
+.ios-hint {
+    background: #fdf9e3;
+    color: #856404;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    border: 1px solid #ffeeba;
+    line-height: 1.4;
+}
+
+.share-icon {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+/* Settings Screen */
+.hidden {
+    display: none !important;
+}
+
+.settings-hint {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.3rem;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-family: inherit;
+    background: #f9f9f9;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--police);
+    background: white;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 22px;
+    background: var(--text-color);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.confirm-target {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.confirm-phone {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.confirm-msg {
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+    font-style: italic;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.modal-btn:active {
+    transform: scale(0.97);
+}
+
+.confirm {
+    background: var(--fire);
+    color: white;
+}
+
+.cancel {
+    background: #eee;
+    color: #7f8c8d;
+}
+
+/* Responsive */
+@media (max-width: 350px) {
+    .emergency-grid { grid-template-columns: 1fr; gap: 10px; }
+    .card-btn { aspect-ratio: auto; padding: 20px; }
+}
